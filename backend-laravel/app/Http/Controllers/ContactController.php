@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -16,9 +18,9 @@ class ContactController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name'=>'required|string',
-            'phone_number'=>'required|unique:contacts,numeric',
-            'latitude'=>'decimal',
-            'longitude'=>'decimal',
+            'phone_number'=>'required|unique:contacts,phone_number|numeric',
+            'latitude'=>'numeric',
+            'longitude'=>'numeric',
         ]);
 
         if($validator->fails()){
@@ -60,7 +62,7 @@ class ContactController extends Controller
     public function assignToUser(Request $request, Contact $contact){
         $userId = $request->get('user_id');
         if($userId){
-            $contact->userContactg()->sync($userId);
+            $contact->userContacts()->sync($userId);
         }
     }
 }
