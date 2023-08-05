@@ -42,4 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function contactUsers(){
+        return $this->belongsToMany(Contact::class, 'contacts_users', 'user_id', 'contact_id')->withTimeStamps();
+    }
 }
