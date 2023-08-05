@@ -6,59 +6,61 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $contacts = Contact::all();
+        return response()->json($contacts);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'name'=>'required|string',
+            'phone_number'=>'required|unique:contacts,numeric',
+            'latitude'=>'decimal',
+            'longitude'=>'decimal',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors(),500);
+        }
+
+        $contact = Contact::create($request->all());
+        return response()->json($contact, 200);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Contact $contact)
     {
-        //
+        return response()->json($contact, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string',
+            'phone_number' => 'required|unique:contacts,numeric',
+            'latitude' => 'decimal',
+            'longitude' => 'decimal',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors(), 500);
+        }
+
+        $contact = Contact::create($request->all());
+        return response()->json($contact, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        return response()->json('', 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    public function assignToUser(Request $request, Contact $contact){
+        $userId = $request->get('user_id');
+        if($userId){
+            $contact->userContactg()->sync($userId);
+        }
     }
 }
