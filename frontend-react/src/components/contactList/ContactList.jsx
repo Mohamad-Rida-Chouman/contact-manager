@@ -4,6 +4,7 @@ import '../../utilities.css'
 import '../contactList/contactList.css'
 import axios from 'axios';
 
+
 const ContactList = () => {
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(true);
