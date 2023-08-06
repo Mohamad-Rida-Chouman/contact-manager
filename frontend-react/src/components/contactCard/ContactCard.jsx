@@ -1,5 +1,6 @@
 import React from "react";
 import '../../utilities.css'
+import '../contactCard/contactCard.css'
 
 const ContactCard = ({contact}) => {
 
@@ -14,16 +15,16 @@ const ContactCard = ({contact}) => {
     const {name, phone_number, latitude, longitude} = contact || seed;
 
     return (
-        <div className="contact-card-container">
-            <div className="contact-card-top">
-                <h2>Image</h2>
-            </div>
-            <div className="contact-card-bot">
+        <div className="contact-card-container flex justify-around border">
+            <div className="contact-card-top flex flex-col justify-center align-center">
                 <h3>{name}</h3>
                 <p>Phone Number: {phone_number}</p>
-                <p>Latitude: {latitude}</p>
-                <p>Longitude: {longitude}</p>
+                <p>Address: ({latitude}, {longitude})</p>
             </div>
+            <div className="contact-card-bot flex justify-center align-center">
+                <h2>Map</h2>
+            </div>
+            
         </div>
     );
 }

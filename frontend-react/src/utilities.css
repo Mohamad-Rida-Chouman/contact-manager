@@ -10,6 +10,14 @@
     justify-content: center;
 }
 
+.justify-around{
+    justify-content: space-around;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
 .align-center{
     align-items: center;
 }
@@ -29,3 +37,34 @@
 .gap-xl{
     gap: 2rem;
 }
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.width-100{
+    width: 100%;
+}
+
+.width-80{
+    width: 80%;
+}
+
+.border{
+    border: 1px solid grey;
+    border-radius: 25px;
+    background-color: black;
+    padding: 0.5rem 1rem;
+}
+
+.black-bg{
+  background-color: black;
+}
+
+.white-bg{
+    background-color: white;
+  }
+
+.black-text{
+    color: black;
+  }

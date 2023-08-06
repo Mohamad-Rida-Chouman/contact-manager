@@ -6,7 +6,7 @@ import ContactForm from './components/contactForm/ContactForm';
 function App() {
   
   return (
-    <div className="App">
+    <div className="App flex">
       <ContactForm/>
       <ContactList/>
     </div>
