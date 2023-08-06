@@ -11,7 +11,4 @@ class Contact extends Model
         'name', 'phone_number', 'latitude', 'longitude',
     ];
 
-    public function userContacts(){
-        return $this->belongsToMany(User::class, 'contacts_users', 'contact_id', 'user_id')->withTimeStamps();
-    }
 }

@@ -3,16 +3,8 @@ import '../../utilities.css'
 import '../contactCard/contactCard.css'
 
 const ContactCard = ({contact}) => {
-
-    // const {name, phone_number, latitude, longitude} = contact;
-    const seed = {
-        name: 'Alex McKenny',
-        phone_number:'81547926',
-        latitude: 40.7128,
-        longitude: -74.0060,
-    };
     
-    const {name, phone_number, latitude, longitude} = contact || seed;
+    const {name, phone_number, latitude, longitude} = contact;
 
     return (
         <div className="contact-card-container flex justify-around border">

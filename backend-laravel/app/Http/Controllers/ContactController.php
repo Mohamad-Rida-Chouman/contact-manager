@@ -59,10 +59,4 @@ class ContactController extends Controller
         return response()->json('', 200);
     }
 
-    public function assignToUser(Request $request, Contact $contact){
-        $userId = $request->get('user_id');
-        if($userId){
-            $contact->userContacts()->sync($userId);
-        }
-    }
 }

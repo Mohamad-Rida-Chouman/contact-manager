@@ -6,7 +6,7 @@ const ContactForm = () => {
     return (
         <div className="main-form-container flex flex-col justify-center align-center">
             <div className="title-form black-text">
-                <h2>Add a Contact</h2>
+                <h3>Add a Contact</h3>
             </div>
             <div className="contact-form flex flex-col border">
                 <div className="contact-name input-box flex justify-between wrap">
